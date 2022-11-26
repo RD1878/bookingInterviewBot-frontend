@@ -7,6 +7,7 @@ import './Header.css';
 
 const Header = () => {
     const {user, onClose} = useTelegram();
+    console.log(user)
 
     return (
         <div className={'header'}>
