@@ -6,16 +6,25 @@ const Form = () => {
     const [country, setCountry] = useState('');
     const [street, setStreet] = useState('');
     const [subject, setSubject] = useState('physical');
-    const {tg} = useTelegram();
+    const {tg, queryId} = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
             country,
             street,
-            subject
+            subject,
+            queryId
         }
-        tg.sendData(JSON.stringify(data));
-    }, [country, street, subject, tg])
+
+        fetch('http://localhost:8000', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        // tg.sendData(JSON.stringify(data));
+    }, [country, street, subject, queryId])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
