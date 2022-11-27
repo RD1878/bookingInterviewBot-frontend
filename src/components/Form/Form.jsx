@@ -16,7 +16,7 @@ const Form = () => {
             queryId
         }
 
-        fetch('http://localhost:8000', {
+        fetch('http://91.105.199.80:8000', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
