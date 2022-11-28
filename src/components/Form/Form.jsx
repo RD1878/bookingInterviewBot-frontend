@@ -10,9 +10,9 @@ const Form = () => {
 
     const onSendData = useCallback(() => {
         const data = {
-            country,
-            street,
-            subject,
+            country: '111',
+            street: '222',
+            subject: '333',
             queryId
         }
 
@@ -22,7 +22,7 @@ const Form = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
-        })
+        });
         // tg.sendData(JSON.stringify(data));
     }, [country, street, subject, queryId])
 
