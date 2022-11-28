@@ -13,7 +13,7 @@ const Form = () => {
             country: '111',
             street: '222',
             subject: '333',
-            queryId
+            queryId: 'ddd'
         }
 
         fetch('http://91.105.199.80:8000', {
@@ -24,7 +24,7 @@ const Form = () => {
             body: JSON.stringify(data)
         });
         // tg.sendData(JSON.stringify(data));
-    }, [queryId])
+    }, [])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
