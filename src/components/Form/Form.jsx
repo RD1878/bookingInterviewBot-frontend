@@ -24,7 +24,7 @@ const Form = () => {
             body: JSON.stringify(data)
         });
         // tg.sendData(JSON.stringify(data));
-    }, [])
+    }, [queryId])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
