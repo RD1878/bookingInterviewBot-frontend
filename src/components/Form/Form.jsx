@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import './Form.css';
 import {useTelegram} from "../../hooks/useTelegram";
 
@@ -8,23 +8,20 @@ const Form = () => {
     const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
 
-    const onSendData = useCallback(() => {
-        const data = {
-            country: '111',
-            street: '222',
-            subject: '333',
-            queryId: 'ddd'
-        }
+    const data = {
+        country: '111',
+        street: '222',
+        subject: '333',
+        queryId: 'ddd'
+    }
 
-        fetch('http://91.105.199.80:8000', {
+    const onSendData = fetch('http://91.105.199.80:8000', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
         });
-        // tg.sendData(JSON.stringify(data));
-    }, [])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
